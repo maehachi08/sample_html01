@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+  <title>demo</title>
+  <!-- jquery -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <!-- bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- fontawesome -->
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+        integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+  <!-- popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <!-- holder.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
+
+  <!-- jquery.mmenu -->
+  <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.6/jquery.mmenu.all.css" />
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.6/jquery.mmenu.all.js"></script>
+
+  <!-- jquery.mhead -->
+  <link type="text/css" rel="stylesheet" href="css/jquery.mhead.css" />
+  <script type="text/javascript" src="js/jquery.mhead.js"></script>
+
+  <!-- custom -->
+  <link type="text/css" rel="stylesheet" href="css/demo.css" />
+  <link type="text/css" rel="stylesheet" href="css/bootstrap_custom.css" />
+  <script type="text/javascript">
+      $('#myCarousel').on('slide.bs.carousel', function () {
+          $('.carousel').carousel({
+              interval: 2000
+          })
+      });
+
+      $(function() {
+          var myGroup = $('#myGroup');
+          myGroup.on('show.bs.collapse','.collapse', function() {
+             myGroup.find('.collapse.show').collapse('hide');
+          });
+
+          // jquery.mhead
+          $("#site-header").mhead(
+              {
+                  hide: 0,
+                  show: 500,
+              }
+          );
+
+          // jquery.mmenu
+          $("#slide_menu").mmenu({
+            // サブメニューをアコーディオンメニューの様に親要素の下に並べる
+            "slidingSubmenus": false,
+            "onClick": {
+                "close": false,
+                "preventDefault": false,
+             },
+             "extensions": [
+                "theme-dark",
+                //"listview-justify",
+                "shadow-page",
+                "shadow-panels",
+             ]
+          });
+      });
+  </script>
+</head>
+<body>
+  <div id="page">
+
+    <!-- ############################################## -->
+    <!-- navbar -->
+    <!-- ############################################## -->
+    <div id="site-header" class="mh-head mh-btns-left mh-align-left">
+       <span class="mh-btns-left">
+          <a class="fa fa-bars" href="#slide_menu"></a>
+       </span>
+       <span class="mh-text">Sample Page</span>
+    </div>
+    <nav id="slide_menu">
+       <ul>
+         <li><a href="/">トップ</a></li>
+         <li><a href="https://github.com/maehachi08" target="_blank">GitHub</a></li>
+       </ul>
+    </nav>
+
+    <!-- ############################################## -->
+    <!-- カルーセル -->
+    <!-- ############################################## -->
+    <div class="container-fluid header_carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" data-src="holder.js/400x120?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide" />
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" data-src="holder.js/400x120?auto=yes&amp;bg=777&amp;fg=444&amp;text=Second slide" alt="Second slide" />
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ############################################## -->
+    <!-- 会社概要などのクリックしたら下に表示されるやつ -->
+    <!-- ############################################## -->
+    <div class="content">
+      <div class="container">
+
+        <div id="myGroup">
+          <div class="card-deck col d-flex justify-content-center">
+            <!-- 会社概要 -->
+            <a data-toggle="collapse" href="#collapseCompanyOverview" aria-expanded="false" aria-controls="collapseCompanyOverview" data-parent="#myGroup">
+              <div class="card">
+                <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap" />
+                <div class="card-body">
+                  <h5 class="card-title">会社概要</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </a>
+
+            <!-- 事業内容 -->
+            <a data-toggle="collapse" href="#collapseService" aria-expanded="false" aria-controls="collapseService" data-parent="#myGroup">
+              <div class="card">
+                <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap" />
+                <div class="card-body">
+                  <h5 class="card-title">事業内容</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </a>
+
+            <!-- 先輩社員インタビュー -->
+            <a data-toggle="collapse" href="#collapseInterview" aria-expanded="false" aria-controls="collapseInterview" data-parent="#myGroup">
+              <div class="card">
+                <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap" />
+                <div class="card-body">
+                  <h5 class="card-title">先輩社員の声</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </a>
+
+            <!-- 選考スケジュール -->
+            <a data-toggle="collapse" href="#collapseSchedule" aria-expanded="false" aria-controls="collapseSchedule" data-parent="#myGroup">
+              <div class="card">
+                <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap" />
+                <div class="card-body">
+                  <h5 class="card-title">選考スケジュール</h5>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="accordion-group">
+            <div class="collapse" id="collapseCompanyOverview">
+              <div class="content">
+                <div class="container">
+                  <div class="border p-3">
+                    <b>会社概要書いてね</b>
+                  </div>
+                </div>
+              </div><!-- end container -->
+            </div><!-- end content -->
+
+            <div class="collapse" id="collapseService">
+              <div class="content">
+                <div class="container">
+                  <div class="border p-3">
+                    <b>事業内容書いてね</b>
+                  </div>
+                </div>
+              </div><!-- end container -->
+            </div><!-- end content -->
+
+            <div class="collapse" id="collapseInterview">
+              <div class="content">
+                <div class="container">
+                  <div class="border p-3">
+                    <b>先輩社員インタビュー書いてね</b>
+                  </div>
+                </div>
+              </div><!-- end container -->
+            </div><!-- end content -->
+
+            <div class="collapse" id="collapseSchedule">
+              <div class="content">
+                <div class="container">
+                  <div class="border p-3">
+                    <b>選考スケジュール書いてね</b>
+                  </div>
+                </div>
+              </div><!-- end container -->
+            </div><!-- end content -->
+          </div><!-- end accordion-group -->
+
+        </div><!-- myGroup -->
+      </div><!-- end container -->
+    </div><!-- end content -->
+
+
+
+    <!-- ############################################## -->
+    <!-- 新卒/中途のページへのリンクです -->
+    <!-- ############################################## -->
+    <div class="content">
+      <div class="container text-center">
+        <img data-src="holder.js/400x200" class="img-fluid rounded" alt="A generic square placeholder image with rounded corners" />
+        <img data-src="holder.js/400x200" class="img-fluid rounded" alt="A generic square placeholder image with rounded corners" />
+      </div><!-- end container -->
+    </div><!-- end content -->
+
+  </div><!-- end page -->
+</body>
+</html>
